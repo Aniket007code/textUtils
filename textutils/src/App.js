@@ -11,10 +11,10 @@ function App() {
       <Navbar title="Text-Utility" />
       <br />
       <div className="container">
-        {/* <TextForm name = "Enter Your Text Here"/> */}
+        <TextForm name = "Enter Your Text Here"/>
 
       </div>
-      <About/>
+      {/* <About/> */}
 
 
       {/* <h1>Hello This is our react App</h1> */}
