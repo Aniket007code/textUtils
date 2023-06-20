@@ -9,6 +9,8 @@ export default function TextForm(props) {
         // .replace(/[^0-9]/g, '');
         // var num = txt.replace(/\D/g, '');
         setText(newText);
+        props.showAlert('Numbers Extracted','success')
+
     }
 
     const handleClearClick = ()=>{
@@ -16,6 +18,8 @@ export default function TextForm(props) {
         // setText("apne clicked ko click kiya")
         let newText = ""
         setText(newText);
+        props.showAlert('Cleared','danger')
+
     }
 
     const handleUpClick = ()=>{
@@ -23,6 +27,7 @@ export default function TextForm(props) {
         // setText("apne clicked ko click kiya")
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert('converted to uppercase','warning')
     }
 
     const handleSpaceClick = ()=>{
@@ -31,6 +36,8 @@ export default function TextForm(props) {
         // let newText = text.replaceAll(' ','');//
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert('Removed extra spaces','warning')
+
     }
 
     const handleDownClick = ()=>{
@@ -39,6 +46,8 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         // .replace(/[^0-9]/g, '');
         setText(newText);
+        props.showAlert('converted to lowercase','warning')
+
     }
 
     const handleOnChange = (event)=>{
@@ -64,7 +73,7 @@ export default function TextForm(props) {
 
 
              
-             <div className="container my-4">
+             <div className="changeColour container my-4">
                 <h4>your Text Summary</h4>
                 <p><b>{text.split(" ").length}</b> words <b>{text.length}</b> length</p>
                 <p>Time required to read paragraph : <b>{text.split(" ").length * 0.008} min </b></p>

@@ -36,6 +36,8 @@ export default function Navbar(props) {
                 <a className="nav-link disabled">Disabled</a>
               </li> */}
                         </ul>
+                        <button type="button" onClick={props.handleColorMode} className="btn btn-success  border border-primary mx-4">{props.btnText2}</button>
+
                         <button type="button" onClick={props.handleDarkMode} className="btn btn-dark  border border-primary">{props.btnText1}</button>
 
                     </div>
@@ -47,9 +49,9 @@ export default function Navbar(props) {
 }
 
 Navbar.protoType = {
-    title : PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 }
 
 Navbar.defaultProps = {
     title: 'Set title Here'
-  };
+};

@@ -9,30 +9,54 @@ import Alert from './components/Alert';
 function App() {
   const [mode, setMode] = useState("light");
   const [btnText1, setbtnText1] = useState("Enable Dark Mode");
+  const [btnText2, setbtnText2] = useState("Enable Color Mode");
 
-  const [alert , setAlert] = useState("Hello Everyone");
 
-  const showAlert = (messege,type)=>{
+  const [alert, setAlert] = useState("");
+
+  const showAlert = (messege, type) => {
     setAlert({
-      msg : messege,
-      type : type
+      msg: messege,
+      type: type
 
     })
+    setTimeout(() => {
+      setAlert("")
+
+    }, 2000);
+  }
+
+  const handleColorMode = () => {
+    if (mode === "light" || mode === "dark") {
+      // setbtnText2("Color mode enabled");
+      document.body.style.backgroundColor = "pink"
+      document.body.style.color = "white"
+    }
+
+
+   
   }
 
 
-  const handleDarkMode=()=>{
-    if(mode === "light"){
+  const handleDarkMode = () => {
+    if (mode === "light") {
       setMode("dark")
       setbtnText1('Enable light Mode')
-      document.body.style.backgroundColor = "#484848"
-      showAlert("Dark mode has been enabled","success")
+      document.body.style.backgroundColor = "#121212"
+      // document.getElementById('changeColour').style.color = 'red'
+      document.body.style.color = "white"
+
+
+
+      showAlert("Dark mode has been enabled", "success")
       // " #121212"
-    }else{
+    } else {
       setMode("light")
       setbtnText1('Enable Dark Mode')
       document.body.style.backgroundColor = "white"
-      showAlert("Light mode has been enabled","success")
+      showAlert("Light mode has been enabled", "success")
+      document.body.style.color = "Black"
+
 
 
 
@@ -44,11 +68,11 @@ function App() {
   return (
     <>
 
-      <Navbar title="Text-Utility" mode={mode} handleDarkMode={handleDarkMode} btnText1 ={btnText1}/>
+      <Navbar title="Text-Utility" mode={mode} handleDarkMode={handleDarkMode} handleColorMode={handleColorMode} btnText1={btnText1} btnText2={btnText2} />
       <br />
-      <Alert alert={alert}/>
+      <Alert alert={alert} />
       <div className="container">
-        <TextForm name = "Enter Your Text Here"/>
+        <TextForm showAlert={showAlert} name="Enter Your Text Here" />
 
       </div>
       {/* <About/> */}
