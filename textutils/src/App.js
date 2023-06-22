@@ -5,6 +5,13 @@ import TextForm from './components/TextForm';
 import About from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -34,7 +41,7 @@ function App() {
     }
 
 
-   
+
   }
 
 
@@ -68,14 +75,35 @@ function App() {
   return (
     <>
 
-      <Navbar title="Text-Utility" mode={mode} handleDarkMode={handleDarkMode} handleColorMode={handleColorMode} btnText1={btnText1} btnText2={btnText2} />
-      <br />
-      <Alert alert={alert} />
-      <div className="container">
-        <TextForm showAlert={showAlert} name="Enter Your Text Here" />
+      <Router>
+        <Navbar title="Text-Utility" mode={mode} handleDarkMode={handleDarkMode} handleColorMode={handleColorMode} btnText1={btnText1} btnText2={btnText2} />
+        <br />
+        <Alert alert={alert} />
 
-      </div>
-      {/* <About/> */}
+        <Routes>
+          <Route path="/about" element={<About />} />
+        </Routes>
+
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<TextForm showAlert={showAlert} name="Enter Your Text Here" />} />
+          </Routes>
+
+        </div>
+
+
+
+        {/* <Route path="/" element={<TextForm />} />
+          <div className="container">
+            <TextForm showAlert={showAlert} name="Enter Your Text Here" />
+
+          </div>
+
+        </Routes> */}
+      </Router>
+
+
+
 
 
       {/* <h1>Hello This is our react App</h1> */}
